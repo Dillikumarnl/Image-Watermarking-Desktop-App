@@ -38,17 +38,18 @@ class ImageProcessor:
         text_height = bbox[3] - bbox[1]
 
         positions = {
-            "Top-Left": (10, 10),
-            "Top-Right": (self.watermarked_image.width - text_width - 10, 10),
-            "Bottom-Left": (10, self.watermarked_image.height - text_height - 10),
-            "Bottom-Right": (self.watermarked_image.width - text_width - 10, self.watermarked_image.height - text_height - 10),
+            "Top-Left": (20, 20),
+            "Top-Right": (self.watermarked_image.width - text_width - 20, 20),
+            "Bottom-Left": (20, self.watermarked_image.height - text_height - 20),
+            "Bottom-Right": (self.watermarked_image.width - text_width - 20, self.watermarked_image.height - text_height - 20),
             "Center": ((self.watermarked_image.width - text_width) // 2, (self.watermarked_image.height - text_height) // 2),
         }
 
-        watermark_position = positions.get(position, (10, 10))
+        watermark_position = positions.get(position, (20, 20))
 
         # Apply the watermark with transparency
-        draw.text(watermark_position, text, fill=(255, 255, 255, int(255 * transparency / 100)), font=font)
+        draw.text(watermark_position, text, (255, 255, 255, int(transparency)), font=font)
+
 
     def get_watermarked_image(self):
         """Return the watermarked image or None if not available."""

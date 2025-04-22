@@ -54,21 +54,21 @@ class WatermarkApp:
         self.position_label = tk.Label(self.position_frame, text="Position:", bg="#F8BB5E")
         self.position_label.pack(side=tk.LEFT, padx=5)
 
-        self.position_var = tk.StringVar(value="Bottom-Right")
+        self.position_var = tk.StringVar(value="Center")
         self.positions = ["Top-Left", "Top-Right", "Bottom-Left", "Bottom-Right", "Center"]
         for pos in self.positions:
             rb = ttk.Radiobutton(self.position_frame, text=pos, variable=self.position_var, value=pos)
             rb.pack(side=tk.LEFT)
 
-        # Transparency and Size
+        # transparency and Size
         self.settings_frame = ttk.Frame(root)
         self.settings_frame.pack(pady=10)
 
         self.transparency_label = tk.Label(self.settings_frame, text="Transparency:")
         self.transparency_label.pack(side=tk.LEFT, padx=5)
 
-        self.transparency_scale = ttk.Scale(self.settings_frame, from_=0, to=100, orient=tk.HORIZONTAL)
-        self.transparency_scale.set(50)  # Default value
+        self.transparency_scale = ttk.Scale(self.settings_frame, from_=0, to=255, orient=tk.HORIZONTAL)
+        self.transparency_scale.set(20)  # Default value
         self.transparency_scale.pack(side=tk.LEFT, padx=5)
 
         self.size_label = tk.Label(self.settings_frame, text="Size:")
